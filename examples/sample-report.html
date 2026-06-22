@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>BriefCheck :: Authority Audit</title>
+<style>
+:root { color-scheme: light; --bg:#fff; --surface:#f7f7f5; --border:#d9d9d4; --text:#1a1a1a; --muted:#5c5c5c;
+  --accent:#7a1f4f; --ok:#1f7a4d; --ok-bg:#e9f7f0; --flag:#b3261e; --flag-bg:#fdecec; --flag-border:#e3a9a9;
+  --amber:#9a6a00; --amber-bg:#fff8e7; --amber-border:#e6d58a; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+.container { max-width:1000px; margin:0 auto; padding:40px 24px 80px; }
+h1 { font-size:25px; margin:0 0 4px; font-weight:700; }
+.subtitle { color:var(--muted); font-size:14px; margin:0 0 6px; }
+.meta { color:var(--muted); font-size:13px; margin-bottom:8px; }
+h2 { font-size:18px; margin:30px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+.banner { border-radius:8px; padding:16px 18px; margin:18px 0; font-size:15px; }
+.banner.bad { background:var(--flag-bg); border:1px solid var(--flag-border); }
+.banner.clean { background:var(--ok-bg); border:1px solid #a9d9c0; }
+.banner .big { font-size:18px; font-weight:700; }
+.counts { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0; }
+.chip { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:5px 13px; font-size:13px; }
+.chip.flag { background:var(--flag-bg); border-color:var(--flag-border); color:var(--flag); font-weight:600; }
+.cite { border:1px solid var(--border); border-radius:7px; padding:13px 15px; margin:11px 0; }
+.cite.flagged { background:var(--flag-bg); border-color:var(--flag-border); }
+.priority { border:2px solid var(--flag-border); background:var(--flag-bg); border-radius:8px; padding:16px 18px; margin:20px 0; }
+.priority h2 { margin:0 0 4px; border:none; padding:0; color:var(--flag); font-size:18px; }
+.priority .lead { font-size:13.5px; color:#5a1a16; margin:0 0 12px; }
+.priority .mm { background:var(--bg); border:1px solid var(--flag-border); border-radius:6px; padding:10px 12px; margin:8px 0; }
+.priority .mm .c { font-family:ui-monospace,Menlo,monospace; font-size:14px; font-weight:600; }
+.priority .mm .pair { font-size:13.5px; margin-top:4px; }
+.priority .mm .pair .b { color:var(--muted); } .priority .mm .pair .r { color:var(--flag); font-weight:600; }
+.cite .row1 { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+.cite .c { font-family:ui-monospace,Menlo,monospace; font-size:14px; font-weight:600; }
+.cite .name { color:var(--muted); font-size:13px; margin-top:2px; }
+.badge { font-size:11px; text-transform:uppercase; letter-spacing:.05em; padding:3px 9px; border-radius:11px; white-space:nowrap; font-weight:700; }
+.badge.ok { background:var(--ok-bg); color:var(--ok); }
+.badge.bad { background:#fff; color:var(--flag); border:1px solid var(--flag-border); }
+.badge.amber { background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-border); }
+.checks { margin-top:9px; display:flex; flex-direction:column; gap:4px; }
+.check { font-size:13px; }
+.check .k { color:var(--muted); display:inline-block; min-width:150px; }
+.check .pass { color:var(--ok); } .check .fail { color:var(--flag); font-weight:600; } .check .na { color:var(--muted); }
+.flags { margin-top:8px; }
+.flags li { color:var(--flag); font-size:13px; }
+.quote { font-style:italic; color:var(--muted); font-size:12.5px; margin-top:4px; }
+.note-box { background:var(--amber-bg); border:1px solid var(--amber-border); border-radius:6px; padding:12px 14px; margin:22px 0; font-size:13px; }
+.footnote { margin-top:36px; padding-top:16px; border-top:1px solid var(--border); font-size:12px; color:var(--muted); }
+</style></head><body><div class="container">
+
+<h1>BriefCheck</h1>
+<p class="subtitle">Authority Audit :: source <code>examples/sample-brief.txt (illustrative)</code></p>
+<div class="meta">Generated 2026-06-22T17:23:15.395592+00:00</div>
+
+
+
+
+<div class="banner bad">
+  <div class="big">3 citation issues to verify</div>
+  Review the flagged authorities below. A "not found" result is a lead to verify, not proof of fabrication, but it is where opposing counsel's hallucinated or miscited authority shows up.
+</div>
+
+
+<div class="counts">
+  <span class="chip">5 citations parsed</span>
+  <span class="chip">4 found</span>
+  <span class="chip flag">1 not found</span>
+  
+  <span class="chip flag">1 name mismatch</span>
+  <span class="chip flag">1 quote not verified</span>
+  
+</div>
+
+
+<div class="priority">
+  <h2>Citation correct, case name wrong</h2>
+  <p class="lead">These citations resolve to a real decision, but the case name in the brief does not match the case at that reporter and page. A right citation with the wrong name is a classic fabrication signature. Look here first.</p>
+  
+  <div class="mm">
+    <span class="c">347 U.S. 483</span>
+    <div class="pair"><span class="b">brief: It cites Doe v. Wrongname</span> &nbsp;resolves to&nbsp; <span class="r">Brown v. Board of Education</span></div>
+  </div>
+  
+</div>
+
+
+<h2>Citations</h2>
+
+<div class="cite ">
+  <div class="row1">
+    <div>
+      <span class="c">550 U.S. 544</span>
+      <div class="name">brief: Bell Atlantic Corp. v. Twombly</div>
+    </div>
+    <span class="badge ok">Exists</span>
+    
+  </div>
+  <div class="checks">
+    <div class="check"><span class="k">Case exists</span>
+      <span class="pass">yes</span>
+    </div>
+    <div class="check"><span class="k">Name matches citation</span>
+      <span class="pass">yes</span>
+    </div>
+    <div class="check"><span class="k">Quoted holding verified</span>
+      <span class="na">no quote checked</span>
+    </div>
+    
+  </div>
+  
+  
+</div>
+
+<div class="cite ">
+  <div class="row1">
+    <div>
+      <span class="c">556 U.S. 662</span>
+      
+    </div>
+    <span class="badge ok">Exists</span>
+    
+  </div>
+  <div class="checks">
+    <div class="check"><span class="k">Case exists</span>
+      <span class="pass">yes</span>
+    </div>
+    <div class="check"><span class="k">Name matches citation</span>
+      <span class="na">not compared</span>
+    </div>
+    <div class="check"><span class="k">Quoted holding verified</span>
+      <span class="pass">yes, quote appears in opinion</span>
+    </div>
+    
+  </div>
+  <div class="quote">quoted: "enough facts to state a claim to relief that is plausible"</div>
+  
+</div>
+
+<div class="cite flagged">
+  <div class="row1">
+    <div>
+      <span class="c">999 U.S. 9999</span>
+      <div class="name">brief: Defendant further relies on Smith v. Fabricated</div>
+    </div>
+    <span class="badge bad">Not found</span>
+  </div>
+  <div class="checks">
+    <div class="check"><span class="k">Case exists</span>
+      <span class="fail">not found in CourtListener</span>
+    </div>
+    <div class="check"><span class="k">Name matches citation</span>
+      <span class="na">not compared</span>
+    </div>
+    <div class="check"><span class="k">Quoted holding verified</span>
+      <span class="na">no quote checked</span>
+    </div>
+    
+  </div>
+  
+  <ul class="flags"><li>citation not found in CourtListener</li></ul>
+</div>
+
+<div class="cite flagged">
+  <div class="row1">
+    <div>
+      <span class="c">347 U.S. 483</span>
+      <div class="name">brief: It cites Doe v. Wrongname :: resolved: Brown v. Board of Education</div>
+    </div>
+    <span class="badge ok">Exists</span>
+    
+  </div>
+  <div class="checks">
+    <div class="check"><span class="k">Case exists</span>
+      <span class="pass">yes</span>
+    </div>
+    <div class="check"><span class="k">Name matches citation</span>
+      <span class="fail">no, name does not match</span>
+    </div>
+    <div class="check"><span class="k">Quoted holding verified</span>
+      <span class="na">no quote checked</span>
+    </div>
+    
+  </div>
+  
+  <ul class="flags"><li>case name does not match the resolved citation</li></ul>
+</div>
+
+<div class="cite flagged">
+  <div class="row1">
+    <div>
+      <span class="c">123 F.3d 456</span>
+      
+    </div>
+    <span class="badge ok">Exists</span>
+    
+  </div>
+  <div class="checks">
+    <div class="check"><span class="k">Case exists</span>
+      <span class="pass">yes</span>
+    </div>
+    <div class="check"><span class="k">Name matches citation</span>
+      <span class="na">not compared</span>
+    </div>
+    <div class="check"><span class="k">Quoted holding verified</span>
+      <span class="fail">no, quote not found in opinion</span>
+    </div>
+    
+  </div>
+  <div class="quote">quoted: "a holding that was never written"</div>
+  <ul class="flags"><li>quoted passage not found in the cited opinion</li></ul>
+</div>
+
+
+<div class="note-box">
+<strong>How to read this, and what it is not.</strong> BriefCheck verifies citations against CourtListener, whose coverage of federal and state case law is large but not complete. A <em>not found</em> result means the citation did not resolve there: it is a strong lead to verify, not proof the case is invented. Quote verification confirms whether a quoted passage literally appears in the cited opinion; it does not judge whether the holding is characterized fairly. The treatment screen looks for negative-treatment words in later opinions and is <strong>not</strong> a substitute for Shepard's or KeyCite. This is not legal advice. Confirm every flag against the primary source before relying on it.
+</div>
+
+<div class="footnote">Source: CourtListener Citation Lookup API. Generated by BriefCheck. Designed by PinkViper Labs.</div>
+
+</div></body></html>

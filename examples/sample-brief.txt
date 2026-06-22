@@ -1,0 +1,7 @@
+EXCERPT FROM PLAINTIFF'S OPPOSITION (illustrative sample)
+
+The pleading standard is settled. See Bell Atlantic Corp. v. Twombly, 550 U.S. 544 (2007). The Court required "enough facts to state a claim to relief that is plausible," 556 U.S. 662 (2009). Defendant further relies on Smith v. Fabricated, 999 U.S. 9999 (2023). It cites Doe v. Wrongname, 347 U.S. 483 (1954) for the proposition. And it quotes "a holding that was never written," 123 F.3d 456 (9th Cir. 1997).
+
+This is synthetic text for demonstration. The citations are chosen to show each
+check: a clean citation, a verified quote, an invented citation, a name that does
+not match the reporter, and a quote that does not appear in the cited opinion.
